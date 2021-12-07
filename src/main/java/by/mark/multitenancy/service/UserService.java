@@ -35,19 +35,15 @@ public class UserService implements ApplicationRunner {
     }
 
     public Optional<User> getUser(String userId) {
-        return userRepository.findById(UUID.fromString(userId));
+        return userRepository.findWithRolesByUserId(UUID.fromString(userId));
     }
 
     public List<User> findAllByName(String name) {
-        return userRepository.findAllByFirstName(name);
-    }
-
-    public List<User> findAllByName2(String name) {
-        return userRepository.findAllByFirstName2(name);
+        return userRepository.findAllWithQueryWithJoinByFirstName(name);
     }
 
     public Page<User> findAllPaged(Pageable pageable) {
-        return userRepository.findAll(pageable);
+        return userRepository.findAllWithRolesBy(pageable);
     }
 
     public void deleteUser(String userId) {

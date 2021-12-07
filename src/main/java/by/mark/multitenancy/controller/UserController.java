@@ -39,15 +39,12 @@ public class UserController {
      */
     @GetMapping
     public List<User> listUsers() {
-        List<User> users = userService.listUsers();
-        return users;
+        return userService.listUsers();
     }
 
     @GetMapping("/with-roles")
     public List<User> listUsersWithRoles() {
-        List<User> users = userService.listUsersWithRoles();
-        System.out.println("1");
-        return users;
+        return userService.listUsersWithRoles();
     }
 
     @GetMapping("/paged")
@@ -68,11 +65,6 @@ public class UserController {
     @GetMapping("/name/{name}")
     public List<User> findAllByName(@PathVariable("name") String name) {
         return userService.findAllByName(name);
-    }
-
-    @GetMapping("/name2/{name}")
-    public List<User> findAllByName2(@PathVariable("name") String name) {
-        return userService.findAllByName2(name);
     }
 
     @DeleteMapping("/{id}")
